@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MainViewController: UIViewController, MKMapViewDelegate {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var durationLabel: UILabel!
@@ -20,18 +20,15 @@ class MainViewController: UIViewController, MKMapViewDelegate {
     private var durationTimer = DurationTimer()
     private var route = Route()
     
-    private var coordinates: [CLLocationCoordinate2D]?
-    private var speeds: [CLLocationSpeed]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .followWithHeading
-        mapView.delegate = self
         
         durationTimer.delegate = self
     }
@@ -44,67 +41,37 @@ class MainViewController: UIViewController, MKMapViewDelegate {
             startStopButton.setTitle("End Ride", for: .normal)
             didStartRide = true
         } else {
-            startStopButton.setTitle("StartRide", for: .normal)
-            didStartRide = false
-            durationTimer.stop()
             locationManager.stopUpdatingLocation()
-            
-            //let ride = Ride(duration: durationTimer.totalDuration!, route: route)
-            
-            coordinates = route.allCoordinates()
-            speeds = route.allSpeeds()
-            //drawRouteOnMap(ride)
+            durationTimer.stop()
+            startStopButton.setTitle("Start Ride", for: .normal)
+            durationLabel.text = "00:00:00"
+            didStartRide = false
+            self.performSegue(withIdentifier: "didEndRideSegue", sender: nil)
         }
         
     }
     
-    private func getSecondsMinutesHours(from seconds: TimeInterval) -> (Int, Int, Int) {
-        let roundedSeconds = Int(seconds)
-        return ((roundedSeconds % 3600) % 60, (roundedSeconds % 3600) / 60, roundedSeconds / 3600)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? RideOverviewViewController {
+            destVC.route = route
+            if let totalDuration = durationTimer.totalDuration {
+                destVC.totalDuration = String().getFormattedTimeString(totalDuration)
+            }
+        }
     }
-    
-    private var tail = 0
-    private var head = 1
-//    private func drawRouteOnMap(_ ride: Ride) {
-//        if coordinates != nil && speeds != nil && coordinates!.count > 1  {
-//            while head < coordinates!.count {
-//                let currentCoordinates = [coordinates![tail], coordinates![head]]
-//                let polyRoute = MKPolyline(coordinates: currentCoordinates, count: currentCoordinates.count)
-//                mapView.addOverlay(polyRoute)
-//                tail += 1
-//                head += 1
-//            }
-//        }
-//    }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let firstSpeed = speeds![tail]
-        let secondSpeed = speeds![head]
-        let averageSpeed = (firstSpeed+secondSpeed)/2
-        
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.lineWidth = 2
-        renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(averageSpeed)
-        
-        return renderer
-    }
-    
-    
 }
 
 extension MainViewController: DurationTimerDelegate {
     func durationDidUpdateWith(_ time: TimeInterval) {
-        let timeComponents = getSecondsMinutesHours(from: time)
-        let formattedTime = String().getFormattedTimeString(hours: timeComponents.2, minutes: timeComponents.1, seconds: timeComponents.0)
+        let formattedTime = String().getFormattedTimeString(time)
         durationLabel.text = formattedTime
-        
     }
 }
 
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations.last!
-        route.addCoordinateSpeedPair(currentLocation.coordinate, currentLocation.speed)
+        route.addLocation(currentLocation)
         
         let coordinateRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 150, longitudinalMeters: 150)
         mapView.setRegion(coordinateRegion, animated: true)

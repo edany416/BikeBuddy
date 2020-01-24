@@ -22,6 +22,7 @@
 		E2997D7B23DA5F73001A6A57 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2997D7A23DA5F73001A6A57 /* String+Extension.swift */; };
 		E2997D7F23DA74F0001A6A57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2997D7E23DA74F0001A6A57 /* UIColor+Extension.swift */; };
 		E2997D8123DA8511001A6A57 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2997D8023DA8511001A6A57 /* PersistenceManager.swift */; };
+		E2997D8323DAC15D001A6A57 /* RideOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2997D8223DAC15D001A6A57 /* RideOverviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E2997D7A23DA5F73001A6A57 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E2997D7E23DA74F0001A6A57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E2997D8023DA8511001A6A57 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		E2997D8223DAC15D001A6A57 /* RideOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideOverviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				E286170123D9966300D17C55 /* MainViewController.swift */,
 				E286170523DA38C900D17C55 /* DurationTimer.swift */,
 				E286170323DA35BA00D17C55 /* Ride.swift */,
+				E2997D8223DAC15D001A6A57 /* RideOverviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2997D7B23DA5F73001A6A57 /* String+Extension.swift in Sources */,
+				E2997D8323DAC15D001A6A57 /* RideOverviewViewController.swift in Sources */,
 				E2997D8123DA8511001A6A57 /* PersistenceManager.swift in Sources */,
 				E277DD6823D91CA300795F4D /* BikeBuddy.xcdatamodeld in Sources */,
 				E277DD5E23D91CA300795F4D /* AppDelegate.swift in Sources */,

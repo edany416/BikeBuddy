@@ -10,33 +10,55 @@ import Foundation
 import CoreLocation
 
 struct Route {
-    private var coordinates: [CLLocationCoordinate2D]
-    private var speeds: [CLLocationSpeed]
-    private var coordinateSpeedPairs: [(CLLocationCoordinate2D,CLLocationSpeed)]
     
+    private var locationList: [CLLocation]
+    
+    var startingPoint: CLLocationCoordinate2D? {
+        if locationList.count > 0 {
+            return locationList[0].coordinate
+        } else {
+            return nil
+        }
+    }
+    
+    var totalDistance: Double? {
+        var sumDistance = Double()
+        var tail = 0
+        var head = 1
+        if locationList.count > 1 {
+            while head < locationList.count {
+                sumDistance += locationList[head].distance(from: locationList[tail])
+                tail += 1
+                head += 1
+            }
+            return sumDistance
+        } else {
+            return nil
+        }
+    }
     
     init() {
-        coordinates = [CLLocationCoordinate2D]()
-        speeds = [CLLocationSpeed]()
-        coordinateSpeedPairs = [(CLLocationCoordinate2D, CLLocationSpeed)]()
-        
+        locationList = [CLLocation]()
     }
     
-//    mutating func addCoordinate(_ coordinate: CLLocationCoordinate2D) {
-//        coordinates.append(coordinate)
-//    }
-    
-    mutating func addCoordinateSpeedPair(_ coordinate: CLLocationCoordinate2D, _ speed: CLLocationSpeed) {
-        coordinates.append(coordinate)
-        speeds.append(speed)
-        coordinateSpeedPairs.append((coordinate,speed))
+    mutating func addLocation(_ location: CLLocation) {
+        locationList.append(location)
     }
     
-    func allCoordinates() -> [CLLocationCoordinate2D] {
-        return coordinates
+    func coordinateForLocationPoint(_ index: Int) -> CLLocationCoordinate2D? {
+        if index < locationList.count {
+            return locationList[index].coordinate
+        } else {
+            return nil
+        }
     }
     
-    func allSpeeds() -> [CLLocationSpeed] {
-        return speeds
+    func speedForLocationPoint(_ index: Int) -> CLLocationSpeed? {
+        if index < locationList.count {
+            return locationList[index].speed
+        } else {
+            return nil
+        }
     }
+    
 }

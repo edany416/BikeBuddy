@@ -8,7 +8,12 @@
 
 import Foundation
 extension String {
-    func getFormattedTimeString(hours: Int, minutes: Int, seconds: Int) -> String {
+    func getFormattedTimeString(_ seconds: TimeInterval) -> String {
+        let roundedSeconds = Int(seconds)
+        let seconds = (roundedSeconds % 3600) % 60
+        let minutes = (roundedSeconds % 3600) / 60
+        let hours = roundedSeconds / 3600
+        
         var secondsString = String()
         var minutesString = String()
         var hoursString = String()

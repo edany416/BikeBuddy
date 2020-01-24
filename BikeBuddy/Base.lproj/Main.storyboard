@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MVN-kH-I34">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main View Controller-->
+        <scene sceneID="Lt1-lI-K4i">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="MVN-kH-I34" customClass="MainViewController" customModule="BikeBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yiN-xH-dc6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKR-c5-Xv8">
+                                <rect key="frame" x="0.0" y="787" width="414" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="dZv-nO-n4c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Start Ride"/>
+                                <connections>
+                                    <action selector="didTapStartStopButton:" destination="MVN-kH-I34" eventType="touchUpInside" id="Iw2-XL-TjX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lej-TL-Y4V">
+                                <rect key="frame" x="8" y="712" width="123.5" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="NXb-hF-uFo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWK-hJ-Qco">
+                                <rect key="frame" x="139.5" y="712" width="274.5" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="4HH-65-8Xr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ucK-pA-fdY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="668"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vKR-c5-Xv8" firstAttribute="top" secondItem="PWK-hJ-Qco" secondAttribute="bottom" id="0WC-gG-0up"/>
+                            <constraint firstItem="Lej-TL-Y4V" firstAttribute="top" secondItem="ucK-pA-fdY" secondAttribute="bottom" id="0Xc-lV-3LL"/>
+                            <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="PWK-hJ-Qco" secondAttribute="trailing" id="956-JP-H0b"/>
+                            <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="vKR-c5-Xv8" secondAttribute="trailing" id="Hvk-9k-2it"/>
+                            <constraint firstItem="PWK-hJ-Qco" firstAttribute="leading" secondItem="Lej-TL-Y4V" secondAttribute="trailing" constant="8" id="IgZ-PF-rzb"/>
+                            <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="ucK-pA-fdY" secondAttribute="trailing" id="Pef-Q0-Cis"/>
+                            <constraint firstItem="Lej-TL-Y4V" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" constant="8" id="ePM-M4-mxm"/>
+                            <constraint firstItem="vKR-c5-Xv8" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" id="iBL-yu-0Jc"/>
+                            <constraint firstItem="vKR-c5-Xv8" firstAttribute="bottom" secondItem="N2H-wv-Yhl" secondAttribute="bottom" id="qRy-ed-nmh"/>
+                            <constraint firstItem="vKR-c5-Xv8" firstAttribute="top" secondItem="Lej-TL-Y4V" secondAttribute="bottom" id="rFl-GZ-cGk"/>
+                            <constraint firstItem="ucK-pA-fdY" firstAttribute="top" secondItem="N2H-wv-Yhl" secondAttribute="top" id="rRL-kP-vSY"/>
+                            <constraint firstItem="ucK-pA-fdY" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" id="xmZ-Nm-Z0L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N2H-wv-Yhl"/>
                     </view>
+                    <connections>
+                        <outlet property="durationLabel" destination="PWK-hJ-Qco" id="wRM-d5-mip"/>
+                        <outlet property="mapView" destination="ucK-pA-fdY" id="tng-fk-jMF"/>
+                        <outlet property="startStopButton" destination="vKR-c5-Xv8" id="8gb-bx-syU"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sD-go-jNE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1000" y="125"/>
         </scene>
     </scenes>
 </document>

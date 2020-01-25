@@ -66,5 +66,47 @@ class PersistanceManager {
             }
         }
     }
+    
+    func saveRide(_ duration: String, route: Route) {
+        let cdRoute = CDRoute(context: self.context)
+        for i in 0..<route.locationPoints {
+            let cdCoordinate = CDCoordinate(context: self.context)
+            let coordinate = route.coordinateForLocationPoint(i)!
+            cdCoordinate.latitude = coordinate.latitude
+            cdCoordinate.longitude = coordinate.longitude
+            cdRoute.addToCoordinateList(cdCoordinate)
+            
+            let cdSpeed = CDSpeed(context: self.context)
+            let speed = route.speedForLocationPoint(i)
+            if speed == nil {
+                cdSpeed.speedMPS = 0
+                cdRoute.addToSpeedList(cdSpeed)
+            } else {
+                cdSpeed.speedMPS = speed!
+                cdRoute.addToSpeedList(cdSpeed)
+            }
+        }
+        
+        cdRoute.totalDistance = route.totalDistance
+        cdRoute.startPointLatitude = route.startingPoint!.latitude
+        cdRoute.startPointLongitude = route.startingPoint!.longitude
+        
+        let cdRide = CDRide(context: self.context)
+        cdRide.route = cdRoute
+        cdRide.duration = duration
+        
+        PersistanceManager.instance.saveContext()
+        os_log("Task successfully saved", log: OSLog.default, type: .info)
+    }
+    
+    func fetchRides(given fetchRequest: NSFetchRequest<CDRide>) -> [CDRide]? {
+        var rides: [CDRide]?
+        do {
+            rides = try PersistanceManager.instance.context.fetch(fetchRequest)
+        } catch {
+            os_log("Could not fetch rides", log: .default, type: .error)
+        }
+        return rides ?? nil
+    }
 
 }

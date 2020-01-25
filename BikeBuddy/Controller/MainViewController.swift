@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .followWithHeading
@@ -39,11 +40,13 @@ class MainViewController: UIViewController {
             locationManager.startUpdatingLocation()
             durationTimer.start()
             startStopButton.setTitle("End Ride", for: .normal)
+            startStopButton.backgroundColor = UIColor.systemRed
             didStartRide = true
         } else {
             locationManager.stopUpdatingLocation()
             durationTimer.stop()
             startStopButton.setTitle("Start Ride", for: .normal)
+            startStopButton.backgroundColor = UIColor.systemGreen
             durationLabel.text = "00:00:00"
             didStartRide = false
             self.performSegue(withIdentifier: "didEndRideSegue", sender: nil)
@@ -57,8 +60,17 @@ class MainViewController: UIViewController {
             if let totalDuration = durationTimer.totalDuration {
                 destVC.totalDuration = String().getFormattedTimeString(totalDuration)
             }
+            route.reset()
         }
     }
+    
+    @IBAction func coreDataTest(_ sender: Any) {
+        let rides = PersistanceManager.instance.fetchRides(given: CDRide.fetchRequest())
+        for ride in rides! {
+            print("\(ride.duration)")
+        }
+    }
+    
 }
 
 extension MainViewController: DurationTimerDelegate {

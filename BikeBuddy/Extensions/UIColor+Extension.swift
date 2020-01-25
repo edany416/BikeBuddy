@@ -14,6 +14,9 @@ extension UIColor {
     
     func colorForSpeedInMetersPerSecond(_ speed: Double) -> UIColor {
         let speedInMPH = speed * 2.237
+        if 0 > speedInMPH {
+            return UIColor.clear
+        }
         if 0 <= speedInMPH && speedInMPH <= 1 {
             return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
@@ -130,10 +133,9 @@ extension UIColor {
             return #colorLiteral(red: 0.05882352941, green: 0.4156862745, blue: 0.537254902, alpha: 1)
         }
         
-        if 30 < speedInMPH {
+        if 29 < speedInMPH && speedInMPH <= 30 {
             return #colorLiteral(red: 0.02745098039, green: 0.3960784314, blue: 0.5215686275, alpha: 1)
         }
-        
-        return UIColor.red
+        return UIColor.systemRed
     }
 }

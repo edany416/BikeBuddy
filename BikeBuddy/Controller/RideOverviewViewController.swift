@@ -15,20 +15,20 @@ class RideOverviewViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    //Should create the ride in the previous VC, then all have instance of that
-    //ride here with all the needed info
-    //Finally save ride with save context if save is tapped
     var route: Route!
     var totalDuration: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         durationLabel.text = totalDuration
-        if let distance = route.totalDistance {
-            distanceLabel.text = String(distance)
-        }
+        let distance = route.totalDistance
+        let metersToMileConversionRate = 0.000621371
+        distanceLabel.text = String(format: "%.2f", distance * metersToMileConversionRate) + "mi"
+    
         mapView.showsUserLocation = false
-        let coordinateRegion = MKCoordinateRegion(center: route.startingPoint!, latitudinalMeters: 400, longitudinalMeters: 400)
+        let coordinateRegion = MKCoordinateRegion(center: route.startingPoint!,
+                                                  latitudinalMeters: 400,
+                                                  longitudinalMeters: 400)
         mapView.setRegion(coordinateRegion, animated: false)
         mapView.delegate = self
         drawRouteOnMap()
@@ -39,26 +39,37 @@ class RideOverviewViewController: UIViewController {
     private var totalDistance = Double()
     private func drawRouteOnMap() {
         while route!.coordinateForLocationPoint(head) != nil {
-            let currentCoordinates = [route.coordinateForLocationPoint(tail)!, route.coordinateForLocationPoint(head)!]
+            let currentCoordinates =
+                [route.coordinateForLocationPoint(tail)!, route.coordinateForLocationPoint(head)!]
             let polyRoute = MKPolyline(coordinates: currentCoordinates, count: currentCoordinates.count)
             mapView.addOverlay(polyRoute)
-
-            tail += 1
-            head += 1
         }
     }
+    
+    @IBAction func didTapSaveRide(_ sender: Any) {
+        PersistanceManager.instance.saveRide(totalDuration, route: route)
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func didTapCancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension RideOverviewViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let firstSpeed = route!.speedForLocationPoint(tail)!
-        let secondSpeed = route!.speedForLocationPoint(head)!
-        let averageSpeed = (firstSpeed+secondSpeed)/2
-          
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.lineWidth = 2
+    
+        let firstSpeed = route.speedForLocationPoint(tail)!
+        let secondSpeed = route.speedForLocationPoint(head)!
+        let averageSpeed = (firstSpeed+secondSpeed)/2
         renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(averageSpeed)
-          
+        
+        tail += 1
+        head += 1
+        
         return renderer
     }
 }

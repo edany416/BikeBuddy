@@ -21,7 +21,7 @@ struct Route {
         }
     }
     
-    var totalDistance: Double? {
+    var totalDistance: Double {
         var sumDistance = Double()
         var tail = 0
         var head = 1
@@ -33,8 +33,12 @@ struct Route {
             }
             return sumDistance
         } else {
-            return nil
+            return 0
         }
+    }
+    
+    var locationPoints: Int {
+        return locationList.count
     }
     
     init() {
@@ -61,4 +65,7 @@ struct Route {
         }
     }
     
+    mutating func reset() {
+        locationList = [CLLocation]()
+    }
 }

@@ -70,6 +70,7 @@ class PersistanceManager {
     func saveRide(_ duration: String, route: Route) {
         let cdRoute = CDRoute(context: self.context)
         for i in 0..<route.locationPoints {
+            print("Location points")
             let cdCoordinate = CDCoordinate(context: self.context)
             let coordinate = route.coordinateForLocationPoint(i)!
             cdCoordinate.latitude = coordinate.latitude
@@ -96,7 +97,6 @@ class PersistanceManager {
         cdRide.duration = duration
         
         PersistanceManager.instance.saveContext()
-        os_log("Task successfully saved", log: OSLog.default, type: .info)
     }
     
     func fetchRides(given fetchRequest: NSFetchRequest<CDRide>) -> [CDRide]? {

@@ -68,9 +68,24 @@ class MainViewController: UIViewController {
         let rides = PersistanceManager.instance.fetchRides(given: CDRide.fetchRequest())
         for ride in rides! {
             print("\(ride.duration)")
+            if let route = ride.route {
+                print("Route")
+                if let speedList = route.speedList?.array as? [CDSpeed] {
+                    print("Speeds")
+                    for speed in speedList {
+                        print("\(speed.speedMPS)")
+                    }
+                }
+                
+                if let coordList = route.coordinateList?.array as? [CDCoordinate] {
+                    for c in coordList {
+                        print("\(c.latitude)")
+                        print("\(c.longitude)")
+                    }
+                }
+            }
         }
     }
-    
 }
 
 extension MainViewController: DurationTimerDelegate {

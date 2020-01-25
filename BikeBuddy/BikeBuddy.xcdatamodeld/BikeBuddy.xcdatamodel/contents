@@ -6,7 +6,7 @@
     </entity>
     <entity name="CDRide" representedClassName="CDRide" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="String"/>
-        <relationship name="route" optional="YES" transient="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoute"/>
+        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoute"/>
     </entity>
     <entity name="CDRoute" representedClassName="CDRoute" syncable="YES">
         <attribute name="startPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

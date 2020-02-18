@@ -67,25 +67,15 @@ class PersistanceManager {
         }
     }
     
-    func saveRide(_ duration: String, route: Route) {
+    func saveRide(duration: String, route: Route) {
         let cdRoute = CDRoute(context: self.context)
-        for i in 0..<route.locationPoints {
-            print("Location points")
-            let cdCoordinate = CDCoordinate(context: self.context)
-            let coordinate = route.coordinateForLocationPoint(i)!
-            cdCoordinate.latitude = coordinate.latitude
-            cdCoordinate.longitude = coordinate.longitude
-            cdRoute.addToCoordinateList(cdCoordinate)
-            
-            let cdSpeed = CDSpeed(context: self.context)
-            let speed = route.speedForLocationPoint(i)
-            if speed == nil {
-                cdSpeed.speedMPS = 0
-                cdRoute.addToSpeedList(cdSpeed)
-            } else {
-                cdSpeed.speedMPS = speed!
-                cdRoute.addToSpeedList(cdSpeed)
-            }
+        let locations = route.allLocations
+        for location in locations {
+            let cdLocation = CDLocation(context: self.context)
+            cdLocation.longitude = location.coordinate.longitude
+            cdLocation.latitude = location.coordinate.latitude
+            cdLocation.speed = location.speed
+            cdRoute.addToLocations(cdLocation)
         }
         
         cdRoute.totalDistance = route.totalDistance

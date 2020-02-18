@@ -50,13 +50,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ucK-pA-fdY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="537"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NH-H3-oTz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="coreDataTest:" destination="MVN-kH-I34" eventType="touchUpInside" id="im2-FP-csG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -64,17 +57,13 @@
                             <constraint firstItem="Lej-TL-Y4V" firstAttribute="top" secondItem="ucK-pA-fdY" secondAttribute="bottom" id="0Xc-lV-3LL"/>
                             <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="PWK-hJ-Qco" secondAttribute="trailing" id="956-JP-H0b"/>
                             <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="vKR-c5-Xv8" secondAttribute="trailing" id="Hvk-9k-2it"/>
-                            <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="1NH-H3-oTz" secondAttribute="trailing" id="HxB-EA-j00"/>
                             <constraint firstItem="PWK-hJ-Qco" firstAttribute="leading" secondItem="Lej-TL-Y4V" secondAttribute="trailing" constant="8" id="IgZ-PF-rzb"/>
                             <constraint firstItem="N2H-wv-Yhl" firstAttribute="trailing" secondItem="ucK-pA-fdY" secondAttribute="trailing" id="Pef-Q0-Cis"/>
-                            <constraint firstItem="ucK-pA-fdY" firstAttribute="top" secondItem="1NH-H3-oTz" secondAttribute="bottom" id="WdB-YT-JQJ"/>
-                            <constraint firstItem="1NH-H3-oTz" firstAttribute="top" secondItem="N2H-wv-Yhl" secondAttribute="top" id="ahe-Oa-RUn"/>
                             <constraint firstItem="Lej-TL-Y4V" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" constant="8" id="ePM-M4-mxm"/>
                             <constraint firstItem="vKR-c5-Xv8" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" id="iBL-yu-0Jc"/>
                             <constraint firstItem="vKR-c5-Xv8" firstAttribute="bottom" secondItem="N2H-wv-Yhl" secondAttribute="bottom" id="qRy-ed-nmh"/>
                             <constraint firstItem="vKR-c5-Xv8" firstAttribute="top" secondItem="Lej-TL-Y4V" secondAttribute="bottom" id="rFl-GZ-cGk"/>
                             <constraint firstItem="ucK-pA-fdY" firstAttribute="top" secondItem="N2H-wv-Yhl" secondAttribute="top" id="rRL-kP-vSY"/>
-                            <constraint firstItem="1NH-H3-oTz" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" id="wPY-qO-Jyq"/>
                             <constraint firstItem="ucK-pA-fdY" firstAttribute="leading" secondItem="N2H-wv-Yhl" secondAttribute="leading" id="xmZ-Nm-Z0L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N2H-wv-Yhl"/>

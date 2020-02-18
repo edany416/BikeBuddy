@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E255D0F623DB9DBF00261C46 /* CDRoute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F023DB9DBF00261C46 /* CDRoute+CoreDataClass.swift */; };
-		E255D0F723DB9DBF00261C46 /* CDRoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F123DB9DBF00261C46 /* CDRoute+CoreDataProperties.swift */; };
-		E255D0F823DB9DBF00261C46 /* CDCoordinate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F223DB9DBF00261C46 /* CDCoordinate+CoreDataClass.swift */; };
-		E255D0F923DB9DBF00261C46 /* CDCoordinate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F323DB9DBF00261C46 /* CDCoordinate+CoreDataProperties.swift */; };
-		E255D0FA23DB9DBF00261C46 /* CDSpeed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F423DB9DBF00261C46 /* CDSpeed+CoreDataClass.swift */; };
-		E255D0FB23DB9DBF00261C46 /* CDSpeed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0F523DB9DBF00261C46 /* CDSpeed+CoreDataProperties.swift */; };
 		E255D0FE23DBA0B600261C46 /* CDRide+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0FC23DBA0B600261C46 /* CDRide+CoreDataClass.swift */; };
 		E255D0FF23DBA0B600261C46 /* CDRide+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D0FD23DBA0B600261C46 /* CDRide+CoreDataProperties.swift */; };
 		E255D10223DC3A9300261C46 /* RidesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255D10123DC3A9300261C46 /* RidesListViewController.swift */; };
@@ -20,11 +14,13 @@
 		E277DD5E23D91CA300795F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E277DD5D23D91CA300795F4D /* AppDelegate.swift */; };
 		E277DD6023D91CA300795F4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E277DD5F23D91CA300795F4D /* SceneDelegate.swift */; };
 		E277DD6523D91CA300795F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E277DD6323D91CA300795F4D /* Main.storyboard */; };
-		E277DD6823D91CA300795F4D /* BikeBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E277DD6623D91CA300795F4D /* BikeBuddy.xcdatamodeld */; };
 		E277DD6A23D91CAA00795F4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E277DD6923D91CAA00795F4D /* Assets.xcassets */; };
 		E277DD6D23D91CAA00795F4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E277DD6B23D91CAA00795F4D /* LaunchScreen.storyboard */; };
 		E277DD7823D91CAA00795F4D /* BikeBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E277DD7723D91CAA00795F4D /* BikeBuddyTests.swift */; };
 		E277DD8323D91CAA00795F4D /* BikeBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E277DD8223D91CAA00795F4D /* BikeBuddyUITests.swift */; };
+		E27F6FF023FC90D00007AD40 /* CDRoute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FEE23FC90D00007AD40 /* CDRoute+CoreDataClass.swift */; };
+		E27F6FF123FC90D00007AD40 /* CDRoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FEF23FC90D00007AD40 /* CDRoute+CoreDataProperties.swift */; };
+		E27F6FF423FC92DC0007AD40 /* BikeBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FF223FC92DC0007AD40 /* BikeBuddy.xcdatamodeld */; };
 		E28616FF23D98E2C00D17C55 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28616FE23D98E2C00D17C55 /* Route.swift */; };
 		E286170223D9966300D17C55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170123D9966300D17C55 /* MainViewController.swift */; };
 		E286170423DA35BA00D17C55 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170323DA35BA00D17C55 /* Ride.swift */; };
@@ -53,12 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E255D0F023DB9DBF00261C46 /* CDRoute+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E255D0F123DB9DBF00261C46 /* CDRoute+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E255D0F223DB9DBF00261C46 /* CDCoordinate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCoordinate+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E255D0F323DB9DBF00261C46 /* CDCoordinate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCoordinate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E255D0F423DB9DBF00261C46 /* CDSpeed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSpeed+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E255D0F523DB9DBF00261C46 /* CDSpeed+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSpeed+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E255D0FC23DBA0B600261C46 /* CDRide+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRide+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E255D0FD23DBA0B600261C46 /* CDRide+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRide+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E255D10123DC3A9300261C46 /* RidesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +57,6 @@
 		E277DD5D23D91CA300795F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E277DD5F23D91CA300795F4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E277DD6423D91CA300795F4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E277DD6723D91CA300795F4D /* BikeBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BikeBuddy.xcdatamodel; sourceTree = "<group>"; };
 		E277DD6923D91CAA00795F4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E277DD6C23D91CAA00795F4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E277DD6E23D91CAA00795F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +66,9 @@
 		E277DD7E23D91CAA00795F4D /* BikeBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikeBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E277DD8223D91CAA00795F4D /* BikeBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeBuddyUITests.swift; sourceTree = "<group>"; };
 		E277DD8423D91CAA00795F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E27F6FEE23FC90D00007AD40 /* CDRoute+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E27F6FEF23FC90D00007AD40 /* CDRoute+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E27F6FF323FC92DC0007AD40 /* BikeBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BikeBuddy.xcdatamodel; sourceTree = "<group>"; };
 		E28616FE23D98E2C00D17C55 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E286170123D9966300D17C55 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E286170323DA35BA00D17C55 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
@@ -115,14 +107,10 @@
 		E255D10023DBA11F00261C46 /* NSManagedObject Files */ = {
 			isa = PBXGroup;
 			children = (
-				E255D0F023DB9DBF00261C46 /* CDRoute+CoreDataClass.swift */,
-				E255D0F123DB9DBF00261C46 /* CDRoute+CoreDataProperties.swift */,
+				E27F6FEE23FC90D00007AD40 /* CDRoute+CoreDataClass.swift */,
+				E27F6FEF23FC90D00007AD40 /* CDRoute+CoreDataProperties.swift */,
 				E255D0FC23DBA0B600261C46 /* CDRide+CoreDataClass.swift */,
 				E255D0FD23DBA0B600261C46 /* CDRide+CoreDataProperties.swift */,
-				E255D0F223DB9DBF00261C46 /* CDCoordinate+CoreDataClass.swift */,
-				E255D0F323DB9DBF00261C46 /* CDCoordinate+CoreDataProperties.swift */,
-				E255D0F423DB9DBF00261C46 /* CDSpeed+CoreDataClass.swift */,
-				E255D0F523DB9DBF00261C46 /* CDSpeed+CoreDataProperties.swift */,
 			);
 			path = "NSManagedObject Files";
 			sourceTree = "<group>";
@@ -160,7 +148,7 @@
 				E277DD6923D91CAA00795F4D /* Assets.xcassets */,
 				E277DD6B23D91CAA00795F4D /* LaunchScreen.storyboard */,
 				E277DD6E23D91CAA00795F4D /* Info.plist */,
-				E277DD6623D91CA300795F4D /* BikeBuddy.xcdatamodeld */,
+				E27F6FF223FC92DC0007AD40 /* BikeBuddy.xcdatamodeld */,
 			);
 			path = BikeBuddy;
 			sourceTree = "<group>";
@@ -348,23 +336,19 @@
 				E2997D7B23DA5F73001A6A57 /* String+Extension.swift in Sources */,
 				E255D0FF23DBA0B600261C46 /* CDRide+CoreDataProperties.swift in Sources */,
 				E2997D8323DAC15D001A6A57 /* RideOverviewViewController.swift in Sources */,
-				E255D0FA23DB9DBF00261C46 /* CDSpeed+CoreDataClass.swift in Sources */,
+				E27F6FF023FC90D00007AD40 /* CDRoute+CoreDataClass.swift in Sources */,
 				E255D10423DCCF7200261C46 /* RideDetailViewController.swift in Sources */,
-				E255D0FB23DB9DBF00261C46 /* CDSpeed+CoreDataProperties.swift in Sources */,
-				E255D0F823DB9DBF00261C46 /* CDCoordinate+CoreDataClass.swift in Sources */,
 				E255D10223DC3A9300261C46 /* RidesListViewController.swift in Sources */,
+				E27F6FF423FC92DC0007AD40 /* BikeBuddy.xcdatamodeld in Sources */,
 				E2997D8123DA8511001A6A57 /* PersistenceManager.swift in Sources */,
-				E277DD6823D91CA300795F4D /* BikeBuddy.xcdatamodeld in Sources */,
-				E255D0F623DB9DBF00261C46 /* CDRoute+CoreDataClass.swift in Sources */,
 				E255D0FE23DBA0B600261C46 /* CDRide+CoreDataClass.swift in Sources */,
 				E277DD5E23D91CA300795F4D /* AppDelegate.swift in Sources */,
 				E2997D7F23DA74F0001A6A57 /* UIColor+Extension.swift in Sources */,
 				E286170223D9966300D17C55 /* MainViewController.swift in Sources */,
 				E28616FF23D98E2C00D17C55 /* Route.swift in Sources */,
-				E255D0F723DB9DBF00261C46 /* CDRoute+CoreDataProperties.swift in Sources */,
+				E27F6FF123FC90D00007AD40 /* CDRoute+CoreDataProperties.swift in Sources */,
 				E286170623DA38C900D17C55 /* DurationTimer.swift in Sources */,
 				E277DD6023D91CA300795F4D /* SceneDelegate.swift in Sources */,
-				E255D0F923DB9DBF00261C46 /* CDCoordinate+CoreDataProperties.swift in Sources */,
 				E286170423DA35BA00D17C55 /* Ride.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,12 +680,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E277DD6623D91CA300795F4D /* BikeBuddy.xcdatamodeld */ = {
+		E27F6FF223FC92DC0007AD40 /* BikeBuddy.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E277DD6723D91CA300795F4D /* BikeBuddy.xcdatamodel */,
+				E27F6FF323FC92DC0007AD40 /* BikeBuddy.xcdatamodel */,
 			);
-			currentVersion = E277DD6723D91CA300795F4D /* BikeBuddy.xcdatamodel */;
+			currentVersion = E27F6FF323FC92DC0007AD40 /* BikeBuddy.xcdatamodel */;
 			path = BikeBuddy.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -13,6 +13,12 @@ struct Route {
     
     private var locationList: [CLLocation]
     
+    var allLocations: [CLLocation] {
+        get {
+            return locationList
+        }
+    }
+    
     var startingPoint: CLLocationCoordinate2D? {
         if locationList.count > 0 {
             return locationList[0].coordinate
@@ -37,32 +43,12 @@ struct Route {
         }
     }
     
-    var locationPoints: Int {
-        return locationList.count
-    }
-    
     init() {
         locationList = [CLLocation]()
     }
     
     mutating func addLocation(_ location: CLLocation) {
         locationList.append(location)
-    }
-    
-    func coordinateForLocationPoint(_ index: Int) -> CLLocationCoordinate2D? {
-        if index < locationList.count {
-            return locationList[index].coordinate
-        } else {
-            return nil
-        }
-    }
-    
-    func speedForLocationPoint(_ index: Int) -> CLLocationSpeed? {
-        if index < locationList.count {
-            return locationList[index].speed
-        } else {
-            return nil
-        }
     }
     
     mutating func reset() {

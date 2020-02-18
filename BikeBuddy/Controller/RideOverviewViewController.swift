@@ -34,26 +34,44 @@ class RideOverviewViewController: UIViewController {
         drawRouteOnMap()
     }
     
-    private var tail = 0
-    private var head = 1
-    private var totalDistance = Double()
+    private var routeSegment = [CLLocation]()
     private func drawRouteOnMap() {
-        while route!.coordinateForLocationPoint(head) != nil {
-            let currentCoordinates =
-                [route.coordinateForLocationPoint(tail)!, route.coordinateForLocationPoint(head)!]
-            let polyRoute = MKPolyline(coordinates: currentCoordinates, count: currentCoordinates.count)
-            mapView.addOverlay(polyRoute)
+        let routeLocations = route!.allLocations
+        
+        if routeLocations.count < 2 {
+            return
         }
+        
+        for location in routeLocations {
+            if routeSegment.count < 2 {
+                routeSegment.append(location)
+                continue
+            }
+            
+            drawSegmentLine(routeSegment)
+            
+            let temp = routeSegment[1]
+            routeSegment[0] = temp
+            routeSegment[1] = location
+        }
+        drawSegmentLine(routeSegment)
     }
     
+    private func drawSegmentLine(_ segment: [CLLocation]) {
+        let segmentCoordinates = [segment[0].coordinate, segment[1].coordinate]
+        let polyRoute = MKPolyline(coordinates: segmentCoordinates, count: segmentCoordinates.count)
+        mapView.addOverlay(polyRoute)
+    }
+    
+    
     @IBAction func didTapSaveRide(_ sender: Any) {
-        PersistanceManager.instance.saveRide(totalDuration, route: route)
+        PersistanceManager.instance.saveRide(duration: totalDuration, route: route)
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func didTapCancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
 }
 
@@ -62,13 +80,10 @@ extension RideOverviewViewController: MKMapViewDelegate {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.lineWidth = 2
     
-        let firstSpeed = route.speedForLocationPoint(tail)!
-        let secondSpeed = route.speedForLocationPoint(head)!
+        let firstSpeed = routeSegment[0].speed
+        let secondSpeed = routeSegment[1].speed
         let averageSpeed = (firstSpeed+secondSpeed)/2
         renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(averageSpeed)
-        
-        tail += 1
-        head += 1
         
         return renderer
     }

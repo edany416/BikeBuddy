@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .followWithHeading
@@ -63,29 +63,6 @@ class MainViewController: UIViewController {
             route.reset()
         }
     }
-    
-    @IBAction func coreDataTest(_ sender: Any) {
-        let rides = PersistanceManager.instance.fetchRides(given: CDRide.fetchRequest())
-        for ride in rides! {
-            print("\(ride.duration)")
-            if let route = ride.route {
-                print("Route")
-                if let speedList = route.speedList?.array as? [CDSpeed] {
-                    print("Speeds")
-                    for speed in speedList {
-                        print("\(speed.speedMPS)")
-                    }
-                }
-                
-                if let coordList = route.coordinateList?.array as? [CDCoordinate] {
-                    for c in coordList {
-                        print("\(c.latitude)")
-                        print("\(c.longitude)")
-                    }
-                }
-            }
-        }
-    }
 }
 
 extension MainViewController: DurationTimerDelegate {
@@ -102,5 +79,9 @@ extension MainViewController: CLLocationManagerDelegate {
         
         let coordinateRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 150, longitudinalMeters: 150)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }

@@ -2,7 +2,7 @@
 //  CDRoute+CoreDataProperties.swift
 //  BikeBuddy
 //
-//  Created by Edan on 1/24/20.
+//  Created by Edan on 2/18/20.
 //  Copyright © 2020 Edan. All rights reserved.
 //
 //
@@ -17,80 +17,43 @@ extension CDRoute {
         return NSFetchRequest<CDRoute>(entityName: "CDRoute")
     }
 
-    @NSManaged public var totalDistance: Double
     @NSManaged public var startPointLatitude: Double
     @NSManaged public var startPointLongitude: Double
-    @NSManaged public var coordinateList: NSOrderedSet?
-    @NSManaged public var speedList: NSOrderedSet?
-
+    @NSManaged public var totalDistance: Double
+    @NSManaged public var locations: NSOrderedSet?
 }
 
-// MARK: Generated accessors for coordinateList
+// MARK: Generated accessors for locations
 extension CDRoute {
 
-    @objc(insertObject:inCoordinateListAtIndex:)
-    @NSManaged public func insertIntoCoordinateList(_ value: CDCoordinate, at idx: Int)
+    @objc(insertObject:inLocationsAtIndex:)
+    @NSManaged public func insertIntoLocations(_ value: CDLocation, at idx: Int)
 
-    @objc(removeObjectFromCoordinateListAtIndex:)
-    @NSManaged public func removeFromCoordinateList(at idx: Int)
+    @objc(removeObjectFromLocationsAtIndex:)
+    @NSManaged public func removeFromLocations(at idx: Int)
 
-    @objc(insertCoordinateList:atIndexes:)
-    @NSManaged public func insertIntoCoordinateList(_ values: [CDCoordinate], at indexes: NSIndexSet)
+    @objc(insertLocations:atIndexes:)
+    @NSManaged public func insertIntoLocations(_ values: [CDLocation], at indexes: NSIndexSet)
 
-    @objc(removeCoordinateListAtIndexes:)
-    @NSManaged public func removeFromCoordinateList(at indexes: NSIndexSet)
+    @objc(removeLocationsAtIndexes:)
+    @NSManaged public func removeFromLocations(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInCoordinateListAtIndex:withObject:)
-    @NSManaged public func replaceCoordinateList(at idx: Int, with value: CDCoordinate)
+    @objc(replaceObjectInLocationsAtIndex:withObject:)
+    @NSManaged public func replaceLocations(at idx: Int, with value: CDLocation)
 
-    @objc(replaceCoordinateListAtIndexes:withCoordinateList:)
-    @NSManaged public func replaceCoordinateList(at indexes: NSIndexSet, with values: [CDCoordinate])
+    @objc(replaceLocationsAtIndexes:withLocations:)
+    @NSManaged public func replaceLocations(at indexes: NSIndexSet, with values: [CDLocation])
 
-    @objc(addCoordinateListObject:)
-    @NSManaged public func addToCoordinateList(_ value: CDCoordinate)
+    @objc(addLocationsObject:)
+    @NSManaged public func addToLocations(_ value: CDLocation)
 
-    @objc(removeCoordinateListObject:)
-    @NSManaged public func removeFromCoordinateList(_ value: CDCoordinate)
+    @objc(removeLocationsObject:)
+    @NSManaged public func removeFromLocations(_ value: CDLocation)
 
-    @objc(addCoordinateList:)
-    @NSManaged public func addToCoordinateList(_ values: NSOrderedSet)
+    @objc(addLocations:)
+    @NSManaged public func addToLocations(_ values: NSOrderedSet)
 
-    @objc(removeCoordinateList:)
-    @NSManaged public func removeFromCoordinateList(_ values: NSOrderedSet)
-
-}
-
-// MARK: Generated accessors for speedList
-extension CDRoute {
-
-    @objc(insertObject:inSpeedListAtIndex:)
-    @NSManaged public func insertIntoSpeedList(_ value: CDSpeed, at idx: Int)
-
-    @objc(removeObjectFromSpeedListAtIndex:)
-    @NSManaged public func removeFromSpeedList(at idx: Int)
-
-    @objc(insertSpeedList:atIndexes:)
-    @NSManaged public func insertIntoSpeedList(_ values: [CDSpeed], at indexes: NSIndexSet)
-
-    @objc(removeSpeedListAtIndexes:)
-    @NSManaged public func removeFromSpeedList(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInSpeedListAtIndex:withObject:)
-    @NSManaged public func replaceSpeedList(at idx: Int, with value: CDSpeed)
-
-    @objc(replaceSpeedListAtIndexes:withSpeedList:)
-    @NSManaged public func replaceSpeedList(at indexes: NSIndexSet, with values: [CDSpeed])
-
-    @objc(addSpeedListObject:)
-    @NSManaged public func addToSpeedList(_ value: CDSpeed)
-
-    @objc(removeSpeedListObject:)
-    @NSManaged public func removeFromSpeedList(_ value: CDSpeed)
-
-    @objc(addSpeedList:)
-    @NSManaged public func addToSpeedList(_ values: NSOrderedSet)
-
-    @objc(removeSpeedList:)
-    @NSManaged public func removeFromSpeedList(_ values: NSOrderedSet)
+    @objc(removeLocations:)
+    @NSManaged public func removeFromLocations(_ values: NSOrderedSet)
 
 }

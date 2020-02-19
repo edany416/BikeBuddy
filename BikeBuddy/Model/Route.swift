@@ -10,48 +10,37 @@ import Foundation
 import CoreLocation
 
 struct Route {
+    private var points = [RoutePoint]()
     
-    private var locationList: [CLLocation]
-    
-    var allLocations: [CLLocation] {
-        get {
-            return locationList
-        }
+    var startingPoint: RoutePoint? {
+        return points.first
     }
     
-    var startingPoint: CLLocationCoordinate2D? {
-        if locationList.count > 0 {
-            return locationList[0].coordinate
-        } else {
-            return nil
-        }
+    var endPoint: RoutePoint? {
+        return points.last
     }
     
-    var totalDistance: Double {
-        var sumDistance = Double()
-        var tail = 0
-        var head = 1
-        if locationList.count > 1 {
-            while head < locationList.count {
-                sumDistance += locationList[head].distance(from: locationList[tail])
-                tail += 1
-                head += 1
+    var distance: Double {
+        var sumDistance: Double = 0
+        if points.count > 1 {
+            for i in 1..<points.count {
+                let toPoint = CLLocation(latitude: points[i].latitude , longitude: points[i].longitute)
+                let fromPoint = CLLocation(latitude: points[i-1].latitude, longitude: points[i-1].longitute)
+                sumDistance += toPoint.distance(from: fromPoint)
             }
-            return sumDistance
-        } else {
-            return 0
         }
+        return sumDistance
     }
     
-    init() {
-        locationList = [CLLocation]()
+    var routePoints: [RoutePoint] {
+        return points
     }
     
-    mutating func addLocation(_ location: CLLocation) {
-        locationList.append(location)
+    mutating func extendRoute(nextPoint: RoutePoint) {
+        points.append(nextPoint)
     }
     
     mutating func reset() {
-        locationList = [CLLocation]()
+        points = [RoutePoint]()
     }
 }

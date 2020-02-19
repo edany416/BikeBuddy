@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CDLocation" representedClassName="CDLocation" syncable="YES" codeGenerationType="class">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-    </entity>
     <entity name="CDRide" representedClassName="CDRide" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="String"/>
-        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoute"/>
+        <attribute name="routeID" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CDRoute" representedClassName="CDRoute" syncable="YES">
-        <attribute name="startPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="startPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="totalDistance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDLocation"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDRoutePoint"/>
+    </entity>
+    <entity name="CDRoutePoint" representedClassName="CDRoutePoint" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
         <element name="CDRide" positionX="-153" positionY="-27" width="128" height="73"/>
-        <element name="CDRoute" positionX="-234.18359375" positionY="-132.89453125" width="128" height="103"/>
-        <element name="CDLocation" positionX="-171" positionY="-45" width="128" height="88"/>
+        <element name="CDRoute" positionX="-234.18359375" positionY="-132.89453125" width="128" height="73"/>
+        <element name="CDRoutePoint" positionX="-189" positionY="-45" width="128" height="88"/>
     </elements>
 </model>

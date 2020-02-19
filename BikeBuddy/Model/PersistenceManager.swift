@@ -69,34 +69,58 @@ class PersistanceManager {
     
     func saveRide(duration: String, route: Route) {
         let cdRoute = CDRoute(context: self.context)
-        let locations = route.allLocations
-        for location in locations {
-            let cdLocation = CDLocation(context: self.context)
-            cdLocation.longitude = location.coordinate.longitude
-            cdLocation.latitude = location.coordinate.latitude
-            cdLocation.speed = location.speed
-            cdRoute.addToLocations(cdLocation)
+        let points = route.routePoints
+        for point in points {
+            let cdRoutePoint = CDRoutePoint(context: self.context)
+            cdRoutePoint.longitude = point.longitute
+            cdRoutePoint.latitude = point.latitude
+            cdRoutePoint.timestamp = point.timestamp
+            cdRoute.addToPoints(cdRoutePoint)
         }
         
-        cdRoute.totalDistance = route.totalDistance
-        cdRoute.startPointLatitude = route.startingPoint!.latitude
-        cdRoute.startPointLongitude = route.startingPoint!.longitude
-        
         let cdRide = CDRide(context: self.context)
-        cdRide.route = cdRoute
         cdRide.duration = duration
+        
+        let uuid = UUID().uuidString
+        cdRide.routeID = uuid
+        cdRoute.id = uuid
         
         PersistanceManager.instance.saveContext()
     }
     
-    func fetchRides(given fetchRequest: NSFetchRequest<CDRide>) -> [CDRide]? {
-        var rides: [CDRide]?
+    func fetchRides() -> [Ride] {
+        var fetchedRides: [CDRide]?
+        var rides = [Ride]()
         do {
-            rides = try PersistanceManager.instance.context.fetch(fetchRequest)
+            fetchedRides = try PersistanceManager.instance.context.fetch(CDRide.fetchRequest())
+            for ride in fetchedRides! {
+                rides.append(Ride(duration: ride.duration, routeID: ride.routeID))
+            }
         } catch {
             os_log("Could not fetch rides", log: .default, type: .error)
         }
-        return rides ?? nil
+        return rides
+    }
+    
+    func fetchRoute(withID id: String) -> Route? {
+        var route: Route?
+        do {
+            let fetchRequest: NSFetchRequest<CDRoute> = CDRoute.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id==%@", id)
+            let fetchedRoute = try PersistanceManager.instance.context.fetch(fetchRequest)
+            if let fRoute = fetchedRoute.first {
+                route = Route()
+                for point in fRoute.points?.array as! [CDRoutePoint] {
+                    let routePoint = RoutePoint(longitute: point.longitude, latitude: point.latitude, timestamp: point.timestamp!)
+                    route!.extendRoute(nextPoint: routePoint)
+                }
+            }
+            
+        } catch {
+            os_log("Could not fetch route with given id", log: .default, type: .error)
+        }
+        
+        return route
     }
 
 }

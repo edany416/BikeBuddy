@@ -15,7 +15,7 @@ extension UIColor {
     func colorForSpeedInMetersPerSecond(_ speed: Double) -> UIColor {
         let speedInMPH = speed * 2.237
         if 0 > speedInMPH {
-            return UIColor.clear
+            return UIColor.black
         }
         if 0 <= speedInMPH && speedInMPH <= 1 {
             return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)

@@ -17,43 +17,43 @@ extension CDRoute {
         return NSFetchRequest<CDRoute>(entityName: "CDRoute")
     }
 
-    @NSManaged public var startPointLatitude: Double
-    @NSManaged public var startPointLongitude: Double
-    @NSManaged public var totalDistance: Double
-    @NSManaged public var locations: NSOrderedSet?
+    @NSManaged public var id: String
+    @NSManaged public var points: NSOrderedSet?
+    
+
 }
 
-// MARK: Generated accessors for locations
+// MARK: Generated accessors for points
 extension CDRoute {
 
-    @objc(insertObject:inLocationsAtIndex:)
-    @NSManaged public func insertIntoLocations(_ value: CDLocation, at idx: Int)
+    @objc(insertObject:inPointsAtIndex:)
+    @NSManaged public func insertIntoPoints(_ value: CDRoutePoint, at idx: Int)
 
-    @objc(removeObjectFromLocationsAtIndex:)
-    @NSManaged public func removeFromLocations(at idx: Int)
+    @objc(removeObjectFromPointsAtIndex:)
+    @NSManaged public func removeFromPoints(at idx: Int)
 
-    @objc(insertLocations:atIndexes:)
-    @NSManaged public func insertIntoLocations(_ values: [CDLocation], at indexes: NSIndexSet)
+    @objc(insertPoints:atIndexes:)
+    @NSManaged public func insertIntoPoints(_ values: [CDRoutePoint], at indexes: NSIndexSet)
 
-    @objc(removeLocationsAtIndexes:)
-    @NSManaged public func removeFromLocations(at indexes: NSIndexSet)
+    @objc(removePointsAtIndexes:)
+    @NSManaged public func removeFromPoints(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInLocationsAtIndex:withObject:)
-    @NSManaged public func replaceLocations(at idx: Int, with value: CDLocation)
+    @objc(replaceObjectInPointsAtIndex:withObject:)
+    @NSManaged public func replacePoints(at idx: Int, with value: CDRoutePoint)
 
-    @objc(replaceLocationsAtIndexes:withLocations:)
-    @NSManaged public func replaceLocations(at indexes: NSIndexSet, with values: [CDLocation])
+    @objc(replacePointsAtIndexes:withPoints:)
+    @NSManaged public func replacePoints(at indexes: NSIndexSet, with values: [CDRoutePoint])
 
-    @objc(addLocationsObject:)
-    @NSManaged public func addToLocations(_ value: CDLocation)
+    @objc(addPointsObject:)
+    @NSManaged public func addToPoints(_ value: CDRoutePoint)
 
-    @objc(removeLocationsObject:)
-    @NSManaged public func removeFromLocations(_ value: CDLocation)
+    @objc(removePointsObject:)
+    @NSManaged public func removeFromPoints(_ value: CDRoutePoint)
 
-    @objc(addLocations:)
-    @NSManaged public func addToLocations(_ values: NSOrderedSet)
+    @objc(addPoints:)
+    @NSManaged public func addToPoints(_ values: NSOrderedSet)
 
-    @objc(removeLocations:)
-    @NSManaged public func removeFromLocations(_ values: NSOrderedSet)
+    @objc(removePoints:)
+    @NSManaged public func removeFromPoints(_ values: NSOrderedSet)
 
 }

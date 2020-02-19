@@ -12,7 +12,7 @@ class RidesListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var ridesTableView: UITableView!
 
-    private var rides:[CDRide]? = [CDRide]() {
+    private var rides:[Ride] = [Ride]() {
         didSet {
             if ridesTableView != nil {
                 self.ridesTableView.reloadData()
@@ -36,34 +36,29 @@ class RidesListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func retrieveData() {
-        rides = PersistanceManager.instance.fetchRides(given: CDRide.fetchRequest())
+        rides = PersistanceManager.instance.fetchRides()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if rides == nil {
-            return 0
-        }
-        return rides!.count
+        rides.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ridesTableView.dequeueReusableCell(withIdentifier: "RideCell", for: indexPath)
-        cell.textLabel?.text = "Ride - \(indexPath.row + 1)"
+        cell.textLabel?.text = rides[indexPath.row].duration
         return cell
     }
     
-    private var selectedRide: CDRide?
+    private var selectedRide: Ride?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if rides != nil {
-            selectedRide = rides![indexPath.row]
-            self.performSegue(withIdentifier: "ShowRideDetailSegue", sender: nil)
-        }
+        selectedRide = rides[indexPath.row]
+        self.performSegue(withIdentifier: "ShowRideDetailSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRideDetailSegue" {
             if let destVC = segue.destination as? RideDetailViewController {
-                destVC.ride = selectedRide
+                destVC.ride = selectedRide!
             }
         }
     }

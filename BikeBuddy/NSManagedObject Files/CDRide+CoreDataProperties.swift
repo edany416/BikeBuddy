@@ -17,7 +17,7 @@ extension CDRide {
         return NSFetchRequest<CDRide>(entityName: "CDRide")
     }
 
+    @NSManaged public var routeID: String
     @NSManaged public var duration: String
-    @NSManaged public var route: CDRoute?
 
 }

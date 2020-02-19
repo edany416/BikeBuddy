@@ -51,7 +51,6 @@ class MainViewController: UIViewController {
             didStartRide = false
             self.performSegue(withIdentifier: "didEndRideSegue", sender: nil)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,13 +74,12 @@ extension MainViewController: DurationTimerDelegate {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations.last!
-        route.addLocation(currentLocation)
+        let point = RoutePoint(longitute: currentLocation.coordinate.longitude,
+                               latitude: currentLocation.coordinate.latitude,
+                               timestamp: currentLocation.timestamp)
+        route.extendRoute(nextPoint: point)
         
         let coordinateRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 150, longitudinalMeters: 150)
         mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }

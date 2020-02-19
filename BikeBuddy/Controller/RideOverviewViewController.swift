@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+struct RouteSegment {
+    var startPoint: RoutePoint
+    var endPoint: RoutePoint
+}
+
 class RideOverviewViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -21,48 +26,36 @@ class RideOverviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         durationLabel.text = totalDuration
-        let distance = route.totalDistance
+        let distance = route.distance
         let metersToMileConversionRate = 0.000621371
         distanceLabel.text = String(format: "%.2f", distance * metersToMileConversionRate) + "mi"
     
-        mapView.showsUserLocation = false
-        let coordinateRegion = MKCoordinateRegion(center: route.startingPoint!,
-                                                  latitudinalMeters: 400,
-                                                  longitudinalMeters: 400)
-        mapView.setRegion(coordinateRegion, animated: false)
-        mapView.delegate = self
+        if let startPoint = route.startingPoint {
+            let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: startPoint.latitude, longitude: startPoint.longitute),
+                latitudinalMeters: 400,
+                longitudinalMeters: 400)
+            mapView.setRegion(coordinateRegion, animated: false)
+            mapView.showsUserLocation = false
+            mapView.delegate = self
+        }
+       
         drawRouteOnMap()
     }
     
-    private var routeSegment = [CLLocation]()
+    private var routeSegment: RouteSegment?
     private func drawRouteOnMap() {
-        let routeLocations = route!.allLocations
-        
-        if routeLocations.count < 2 {
-            return
-        }
-        
-        for location in routeLocations {
-            if routeSegment.count < 2 {
-                routeSegment.append(location)
-                continue
+        let routePoints = route.routePoints
+        if routePoints.count > 1 {
+            for i in 1..<routePoints.count {
+                routeSegment = RouteSegment(startPoint: routePoints[i-1], endPoint: routePoints[i])
+                let startCoord = CLLocationCoordinate2D(latitude: routeSegment!.startPoint.latitude, longitude: routeSegment!.startPoint.longitute)
+                let endCoord = CLLocationCoordinate2D(latitude: routeSegment!.endPoint.latitude, longitude: routeSegment!.endPoint.longitute)
+                let segmentCoords = [startCoord, endCoord]
+                let polyline = MKPolyline(coordinates: segmentCoords, count: segmentCoords.count)
+                mapView.addOverlay(polyline)
             }
-            
-            drawSegmentLine(routeSegment)
-            
-            let temp = routeSegment[1]
-            routeSegment[0] = temp
-            routeSegment[1] = location
         }
-        drawSegmentLine(routeSegment)
     }
-    
-    private func drawSegmentLine(_ segment: [CLLocation]) {
-        let segmentCoordinates = [segment[0].coordinate, segment[1].coordinate]
-        let polyRoute = MKPolyline(coordinates: segmentCoordinates, count: segmentCoordinates.count)
-        mapView.addOverlay(polyRoute)
-    }
-    
     
     @IBAction func didTapSaveRide(_ sender: Any) {
         PersistanceManager.instance.saveRide(duration: totalDuration, route: route)
@@ -79,11 +72,15 @@ extension RideOverviewViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.lineWidth = 2
-    
-        let firstSpeed = routeSegment[0].speed
-        let secondSpeed = routeSegment[1].speed
-        let averageSpeed = (firstSpeed+secondSpeed)/2
-        renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(averageSpeed)
+        
+        let firstLocation = CLLocation(latitude: routeSegment!.startPoint.latitude, longitude: routeSegment!.startPoint.longitute)
+        let secondLocation = CLLocation(latitude: routeSegment!.endPoint.latitude, longitude: routeSegment!.endPoint.longitute)
+        
+        let distanceTraveled = secondLocation.distance(from: firstLocation)
+        let timeToTravalDistance = routeSegment!.endPoint.timestamp.timeIntervalSince(routeSegment!.startPoint.timestamp)
+        
+        let speed = distanceTraveled/timeToTravalDistance
+        renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(speed)
         
         return renderer
     }

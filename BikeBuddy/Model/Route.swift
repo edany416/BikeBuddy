@@ -11,6 +11,11 @@ import CoreLocation
 
 struct Route {
     private var points = [RoutePoint]()
+    private var frame = RouteFrame()
+    
+    var routeFrame: RouteFrame {
+        return frame
+    }
     
     var startingPoint: RoutePoint? {
         return points.first
@@ -38,6 +43,7 @@ struct Route {
     
     mutating func extendRoute(nextPoint: RoutePoint) {
         points.append(nextPoint)
+        frame.adjustFrame(latitude: nextPoint.latitude, longitude: nextPoint.longitute)
     }
     
     mutating func reset() {

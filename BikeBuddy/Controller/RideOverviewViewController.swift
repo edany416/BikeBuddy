@@ -29,17 +29,19 @@ class RideOverviewViewController: UIViewController {
         let distance = route.distance
         let metersToMileConversionRate = 0.000621371
         distanceLabel.text = String(format: "%.2f", distance * metersToMileConversionRate) + "mi"
+        configureMap()
+        drawRouteOnMap()
+    }
     
-        if let startPoint = route.startingPoint {
-            let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: startPoint.latitude, longitude: startPoint.longitute),
-                latitudinalMeters: 400,
-                longitudinalMeters: 400)
+    private func configureMap() {
+        if route.startingPoint != nil {
+            let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter),
+                latitudinalMeters: route.routeFrame.latitudeSpread + 10,
+                longitudinalMeters: route.routeFrame.longitudeSpread + 10)
             mapView.setRegion(coordinateRegion, animated: false)
             mapView.showsUserLocation = false
             mapView.delegate = self
         }
-       
-        drawRouteOnMap()
     }
     
     private var routeSegment: RouteSegment?

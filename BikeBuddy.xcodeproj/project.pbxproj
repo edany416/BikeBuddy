@@ -23,6 +23,7 @@
 		E27F6FF923FCF0E50007AD40 /* CDRoute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FF723FCF0E50007AD40 /* CDRoute+CoreDataClass.swift */; };
 		E27F6FFA23FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FF823FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift */; };
 		E27F6FFC23FCFD0C0007AD40 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FFB23FCFD0C0007AD40 /* Ride.swift */; };
+		E27F6FFE23FE05C00007AD40 /* RouteFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */; };
 		E28616FF23D98E2C00D17C55 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28616FE23D98E2C00D17C55 /* Route.swift */; };
 		E286170223D9966300D17C55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170123D9966300D17C55 /* MainViewController.swift */; };
 		E286170623DA38C900D17C55 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170523DA38C900D17C55 /* DurationTimer.swift */; };
@@ -72,6 +73,7 @@
 		E27F6FF723FCF0E50007AD40 /* CDRoute+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E27F6FF823FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E27F6FFB23FCFD0C0007AD40 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
+		E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFrame.swift; sourceTree = "<group>"; };
 		E28616FE23D98E2C00D17C55 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E286170123D9966300D17C55 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E286170523DA38C900D17C55 /* DurationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				E28616FE23D98E2C00D17C55 /* Route.swift */,
 				E2997D8023DA8511001A6A57 /* PersistenceManager.swift */,
 				E27F6FFB23FCFD0C0007AD40 /* Ride.swift */,
+				E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				E277DD5E23D91CA300795F4D /* AppDelegate.swift in Sources */,
 				E2997D7F23DA74F0001A6A57 /* UIColor+Extension.swift in Sources */,
 				E286170223D9966300D17C55 /* MainViewController.swift in Sources */,
+				E27F6FFE23FE05C00007AD40 /* RouteFrame.swift in Sources */,
 				E28616FF23D98E2C00D17C55 /* Route.swift in Sources */,
 				E27F6FFC23FCFD0C0007AD40 /* Ride.swift in Sources */,
 				E27F6FF923FCF0E50007AD40 /* CDRoute+CoreDataClass.swift in Sources */,

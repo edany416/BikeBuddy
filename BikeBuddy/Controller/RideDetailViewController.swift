@@ -26,18 +26,20 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
             let metersToMilesConversionRate = 0.00062137
             let distanceInMeters = route.distance
             distanceLabel.text = String(format: "%.2f", distanceInMeters * metersToMilesConversionRate) + "mi"
-            
-            if let start = route.startingPoint {
-                let startCoord = CLLocationCoordinate2D(latitude: start.latitude, longitude: start.longitute)
-                let coordinateRegion = MKCoordinateRegion(center: startCoord, latitudinalMeters: 400, longitudinalMeters: 400)
-                mapView.setRegion(coordinateRegion, animated: false)
-            }
+            configureMap()
+            drawRouteOnMap()
         }
-        
-        mapView.delegate = self
-        mapView.showsUserLocation = false
-       
-        drawRouteOnMap()
+    }
+    
+    private func configureMap() {
+        if route.startingPoint != nil {
+            let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter),
+                latitudinalMeters: route.routeFrame.latitudeSpread + 10,
+                longitudinalMeters: route.routeFrame.longitudeSpread + 10)
+            mapView.setRegion(coordinateRegion, animated: false)
+            mapView.showsUserLocation = false
+            mapView.delegate = self
+        }
     }
 
     private var routeSegment: RouteSegment?

@@ -73,7 +73,7 @@ extension MainViewController: DurationTimerDelegate {
 
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation = locations.last!
+        let currentLocation = locations.last!    
         let point = RoutePoint(longitute: currentLocation.coordinate.longitude,
                                latitude: currentLocation.coordinate.latitude,
                                timestamp: currentLocation.timestamp)

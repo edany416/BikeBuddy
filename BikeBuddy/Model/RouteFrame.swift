@@ -15,14 +15,18 @@ struct RouteFrame {
         let midPoint = abs(maxLongitude+minLongitude)/2
         let leftPoint = CLLocation(latitude: minLatitude, longitude: midPoint)
         let rightPoint = CLLocation(latitude: maxLatitude, longitude: midPoint)
-        return rightPoint.distance(from: leftPoint)
+        let spread = rightPoint.distance(from: leftPoint)
+        let buffer = spread * 0.20
+        return spread + buffer
     }
     
     var longitudeSpread: Double {
         let midPoint = abs(maxLatitude + minLatitude)/2
         let bottomPoint = CLLocation(latitude: midPoint, longitude: minLongitude)
         let topPoint = CLLocation(latitude: midPoint, longitude: maxLongitude)
-        return topPoint.distance(from: bottomPoint)
+        let spread = topPoint.distance(from: bottomPoint)
+        let buffer = spread * 0.20
+        return spread + buffer
     }
     
     var latitudinalCenter: Double {

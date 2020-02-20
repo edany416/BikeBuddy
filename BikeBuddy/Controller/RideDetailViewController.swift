@@ -33,43 +33,25 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     
     private func configureMap() {
         if route.startingPoint != nil {
-            let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter),
-                latitudinalMeters: route.routeFrame.latitudeSpread + 10,
-                longitudinalMeters: route.routeFrame.longitudeSpread + 10)
-            mapView.setRegion(coordinateRegion, animated: false)
-            mapView.showsUserLocation = false
+            mapView.configure(from: route)
             mapView.delegate = self
         }
     }
 
-    private var routeSegment: RouteSegment?
+    private var colorForPolylines: [MKPolyline:UIColor]?
     private func drawRouteOnMap() {
-        let routePoints = route.routePoints
-        if routePoints.count > 1 {
-            for i in 1..<routePoints.count {
-                routeSegment = RouteSegment(startPoint: routePoints[i-1], endPoint: routePoints[i])
-                let startCoord = CLLocationCoordinate2D(latitude: routeSegment!.startPoint.latitude, longitude: routeSegment!.startPoint.longitute)
-                let endCoord = CLLocationCoordinate2D(latitude: routeSegment!.endPoint.latitude, longitude: routeSegment!.endPoint.longitute)
-                let segmentCoords = [startCoord, endCoord]
-                let polyline = MKPolyline(coordinates: segmentCoords, count: segmentCoords.count)
-                mapView.addOverlay(polyline)
-            }
+        if route.routePoints.count > 1 {
+            let drawComponents = Util.makePolylines(from: route.routePoints)
+            colorForPolylines = drawComponents.1
+            drawComponents.0.forEach({mapView.addOverlay($0)})
         }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        let polyline = overlay as! MKPolyline
+        let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.lineWidth = 2
-        
-        let firstLocation = CLLocation(latitude: routeSegment!.startPoint.latitude, longitude: routeSegment!.startPoint.longitute)
-        let secondLocation = CLLocation(latitude: routeSegment!.endPoint.latitude, longitude: routeSegment!.endPoint.longitute)
-
-        let distanceTraveled = secondLocation.distance(from: firstLocation)
-        let timeToTravalDistance = routeSegment!.endPoint.timestamp.timeIntervalSince(routeSegment!.startPoint.timestamp)
-
-        let speed = distanceTraveled/timeToTravalDistance
-        renderer.strokeColor = UIColor().colorForSpeedInMetersPerSecond(speed)
-
+        renderer.strokeColor = colorForPolylines![polyline]!
         return renderer
     }
 }

@@ -24,6 +24,9 @@
 		E27F6FFA23FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FF823FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift */; };
 		E27F6FFC23FCFD0C0007AD40 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FFB23FCFD0C0007AD40 /* Ride.swift */; };
 		E27F6FFE23FE05C00007AD40 /* RouteFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */; };
+		E27F700123FE197D0007AD40 /* RideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700023FE197D0007AD40 /* RideListTableViewCell.swift */; };
+		E27F700323FE30AE0007AD40 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700223FE30AE0007AD40 /* Util.swift */; };
+		E27F700523FE3D530007AD40 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700423FE3D530007AD40 /* MKMapView+Extension.swift */; };
 		E28616FF23D98E2C00D17C55 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28616FE23D98E2C00D17C55 /* Route.swift */; };
 		E286170223D9966300D17C55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170123D9966300D17C55 /* MainViewController.swift */; };
 		E286170623DA38C900D17C55 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170523DA38C900D17C55 /* DurationTimer.swift */; };
@@ -74,6 +77,9 @@
 		E27F6FF823FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E27F6FFB23FCFD0C0007AD40 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFrame.swift; sourceTree = "<group>"; };
+		E27F700023FE197D0007AD40 /* RideListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideListTableViewCell.swift; sourceTree = "<group>"; };
+		E27F700223FE30AE0007AD40 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		E27F700423FE3D530007AD40 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
 		E28616FE23D98E2C00D17C55 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E286170123D9966300D17C55 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E286170523DA38C900D17C55 /* DurationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		E277DD5C23D91CA200795F4D /* BikeBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				E27F6FFF23FE191E0007AD40 /* TableView Cells */,
 				E2997D7923DA5F62001A6A57 /* Extensions */,
 				E286170023D9960F00D17C55 /* Controller */,
 				E28616FD23D98DF000D17C55 /* Model */,
@@ -175,6 +182,14 @@
 			path = BikeBuddyUITests;
 			sourceTree = "<group>";
 		};
+		E27F6FFF23FE191E0007AD40 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E27F700023FE197D0007AD40 /* RideListTableViewCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
 		E28616FD23D98DF000D17C55 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +198,7 @@
 				E2997D8023DA8511001A6A57 /* PersistenceManager.swift */,
 				E27F6FFB23FCFD0C0007AD40 /* Ride.swift */,
 				E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */,
+				E27F700223FE30AE0007AD40 /* Util.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +220,7 @@
 			children = (
 				E2997D7A23DA5F73001A6A57 /* String+Extension.swift */,
 				E2997D7E23DA74F0001A6A57 /* UIColor+Extension.swift */,
+				E27F700423FE3D530007AD40 /* MKMapView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +360,7 @@
 				E255D0FF23DBA0B600261C46 /* CDRide+CoreDataProperties.swift in Sources */,
 				E2997D8323DAC15D001A6A57 /* RideOverviewViewController.swift in Sources */,
 				E255D10423DCCF7200261C46 /* RideDetailViewController.swift in Sources */,
+				E27F700323FE30AE0007AD40 /* Util.swift in Sources */,
 				E255D10223DC3A9300261C46 /* RidesListViewController.swift in Sources */,
 				E27F6FF423FC92DC0007AD40 /* BikeBuddy.xcdatamodeld in Sources */,
 				E2997D8123DA8511001A6A57 /* PersistenceManager.swift in Sources */,
@@ -352,10 +370,12 @@
 				E2997D7F23DA74F0001A6A57 /* UIColor+Extension.swift in Sources */,
 				E286170223D9966300D17C55 /* MainViewController.swift in Sources */,
 				E27F6FFE23FE05C00007AD40 /* RouteFrame.swift in Sources */,
+				E27F700123FE197D0007AD40 /* RideListTableViewCell.swift in Sources */,
 				E28616FF23D98E2C00D17C55 /* Route.swift in Sources */,
 				E27F6FFC23FCFD0C0007AD40 /* Ride.swift in Sources */,
 				E27F6FF923FCF0E50007AD40 /* CDRoute+CoreDataClass.swift in Sources */,
 				E286170623DA38C900D17C55 /* DurationTimer.swift in Sources */,
+				E27F700523FE3D530007AD40 /* MKMapView+Extension.swift in Sources */,
 				E277DD6023D91CA300795F4D /* SceneDelegate.swift in Sources */,
 				E27F6FFA23FCF0E50007AD40 /* CDRoute+CoreDataProperties.swift in Sources */,
 			);

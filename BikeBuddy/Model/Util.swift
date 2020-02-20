@@ -9,12 +9,7 @@
 import Foundation
 import MapKit
 
-struct RouteSegment {
-    var startPoint: RoutePoint
-    var endPoint: RoutePoint
-}
-
-struct Util {
+enum Util {
     static func makePolylines(from routePoints: [RoutePoint]) -> ([MKPolyline], [MKPolyline:UIColor]) {
         var polylines = [MKPolyline]()
         var colorForPolylines = [MKPolyline:UIColor]()

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDImage" representedClassName="CDImage" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="routeId" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="CDRide" representedClassName="CDRide" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="routeID" optional="YES" attributeType="String"/>
@@ -17,5 +21,6 @@
         <element name="CDRide" positionX="-153" positionY="-27" width="128" height="73"/>
         <element name="CDRoute" positionX="-234.18359375" positionY="-132.89453125" width="128" height="73"/>
         <element name="CDRoutePoint" positionX="-189" positionY="-45" width="128" height="88"/>
+        <element name="CDImage" positionX="-180" positionY="-45" width="128" height="73"/>
     </elements>
 </model>

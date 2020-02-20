@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 import os
 
@@ -67,7 +68,7 @@ class PersistanceManager {
         }
     }
     
-    func saveRide(duration: String, route: Route) {
+    func saveRide(duration: String, route: Route, routeImage: Data) {
         let cdRoute = CDRoute(context: self.context)
         let points = route.routePoints
         for point in points {
@@ -80,11 +81,15 @@ class PersistanceManager {
         
         let cdRide = CDRide(context: self.context)
         cdRide.duration = duration
+    
+        let cdImage = CDImage(context: self.context)
+        cdImage.image = routeImage
         
         let uuid = UUID().uuidString
         cdRide.routeID = uuid
         cdRoute.id = uuid
-        
+        cdImage.routeId = uuid
+                
         PersistanceManager.instance.saveContext()
     }
     
@@ -121,6 +126,18 @@ class PersistanceManager {
         }
         
         return route
+    }
+    
+    func fetchImage(withRouteID id: String) -> [CDImage] {
+        var image = [CDImage]()
+        do {
+            let fetchRequest: NSFetchRequest<CDImage> = CDImage.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "routeId==%@", id)
+            image = try PersistanceManager.instance.context.fetch(fetchRequest)
+        } catch {
+             os_log("Could not fetch image with given id", log: .default, type: .error)
+        }
+        return image
     }
 
 }

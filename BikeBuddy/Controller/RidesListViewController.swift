@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RidesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -44,8 +45,12 @@ class RidesListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ridesTableView.dequeueReusableCell(withIdentifier: "RideCell", for: indexPath)
-        cell.textLabel?.text = rides[indexPath.row].duration
+        let cell = ridesTableView.dequeueReusableCell(withIdentifier: "RideListCell", for: indexPath) as! RideListTableViewCell
+        let ride = rides[indexPath.row]
+        if let routeId = ride.routeID {
+            let image = PersistanceManager.instance.fetchImage(withRouteID: routeId)
+            cell.configureCell(from: RideListCellModel(date: "10-10-10", routeImage: image[0].image!))
+        }
         return cell
     }
     

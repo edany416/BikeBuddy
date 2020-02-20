@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gV-gQ-oKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886.9565217391305" y="133.92857142857142"/>
+            <point key="canvasLocation" x="1886.9565217391305" y="133.69565217391306"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="MMu-8u-8rF">
@@ -227,35 +227,48 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RideListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="6tD-7O-lyv" userLabel="RideListCell">
-                                        <rect key="frame" x="0.0" y="105" width="414" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RideListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RideListCell" rowHeight="100" id="6tD-7O-lyv" userLabel="RideListCell" customClass="RideListTableViewCell" customModule="BikeBuddy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="105" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6tD-7O-lyv" id="jc0-xs-zbq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YH6-i1-VUH">
-                                                    <rect key="frame" x="269" y="5" width="140" height="140"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="YH6-i1-VUH" secondAttribute="height" multiplier="1:1" id="fK7-ml-9Pe"/>
-                                                    </constraints>
-                                                </mapView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday, Feb 15, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14z-ER-TXC">
-                                                    <rect key="frame" x="5" y="5" width="244" height="23"/>
+                                                    <rect key="frame" x="15" y="38.666666666666664" width="195.66666666666666" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-jl-gY0">
+                                                    <rect key="frame" x="319" y="5" width="90" height="90"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-vY-uzv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="4ct-vY-uzv" firstAttribute="leading" secondItem="Fnc-jl-gY0" secondAttribute="leading" id="CRR-Pn-arN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4ct-vY-uzv" secondAttribute="trailing" id="Hs2-uz-VDW"/>
+                                                        <constraint firstItem="4ct-vY-uzv" firstAttribute="top" secondItem="Fnc-jl-gY0" secondAttribute="top" id="ha2-FQ-X53"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4ct-vY-uzv" secondAttribute="bottom" id="mqk-pN-cgm"/>
+                                                        <constraint firstAttribute="width" secondItem="Fnc-jl-gY0" secondAttribute="height" multiplier="1:1" id="n2p-mn-gNZ"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="14z-ER-TXC" firstAttribute="leading" secondItem="jc0-xs-zbq" secondAttribute="leading" constant="5" id="3aW-kw-c4C"/>
-                                                <constraint firstAttribute="bottom" secondItem="YH6-i1-VUH" secondAttribute="bottom" constant="5" id="3ud-In-0a7"/>
-                                                <constraint firstAttribute="trailing" secondItem="YH6-i1-VUH" secondAttribute="trailing" constant="5" id="HvJ-0R-KNG"/>
-                                                <constraint firstItem="YH6-i1-VUH" firstAttribute="top" secondItem="jc0-xs-zbq" secondAttribute="top" constant="5" id="I3c-5q-ujE"/>
-                                                <constraint firstItem="14z-ER-TXC" firstAttribute="top" secondItem="jc0-xs-zbq" secondAttribute="top" constant="5" id="VwP-hp-ytF"/>
-                                                <constraint firstItem="YH6-i1-VUH" firstAttribute="leading" secondItem="14z-ER-TXC" secondAttribute="trailing" constant="20" id="uhS-g5-tuJ"/>
+                                                <constraint firstItem="Fnc-jl-gY0" firstAttribute="height" secondItem="jc0-xs-zbq" secondAttribute="height" multiplier="0.9" id="2yd-Nw-Hqn"/>
+                                                <constraint firstItem="14z-ER-TXC" firstAttribute="leading" secondItem="jc0-xs-zbq" secondAttribute="leading" constant="15" id="3aW-kw-c4C"/>
+                                                <constraint firstItem="Fnc-jl-gY0" firstAttribute="centerY" secondItem="jc0-xs-zbq" secondAttribute="centerY" id="HbC-1d-bsY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fnc-jl-gY0" secondAttribute="trailing" constant="5" id="IU4-Fw-egB"/>
+                                                <constraint firstItem="14z-ER-TXC" firstAttribute="centerY" secondItem="jc0-xs-zbq" secondAttribute="centerY" id="q78-2h-7k4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="14z-ER-TXC" id="WMa-gZ-ctd"/>
+                                            <outlet property="routeThumbnail" destination="4ct-vY-uzv" id="mXA-xc-9Ij"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

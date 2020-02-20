@@ -17,6 +17,8 @@ class RideOverviewViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    @IBOutlet weak var testImageView: UIImageView!
+    
     var route: Route!
     var totalDuration: String!
     
@@ -32,7 +34,8 @@ class RideOverviewViewController: UIViewController {
     
     private func configureMap() {
         if route.startingPoint != nil {
-            mapView.configure(from: route)
+            let center = CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter)
+            mapView.configure(from: MapViewModel(center: center, longitudinalSpread: route.routeFrame.longitudeSpread, latitudinalSpread: route.routeFrame.latitudeSpread))
             mapView.delegate = self
         }
     }
@@ -40,14 +43,18 @@ class RideOverviewViewController: UIViewController {
     private var colorForPolylines: [MKPolyline:UIColor]?
     private func drawRouteOnMap() {
         if route.routePoints.count > 1 {
-            let drawComponents = Util.makePolylines(from: route.routePoints)
-            colorForPolylines = drawComponents.1
-            drawComponents.0.forEach({mapView.addOverlay($0)})
+            let (polylines, colors) = Util.makePolylines(from: route.routePoints)
+            colorForPolylines = colors
+            polylines.forEach({mapView.addOverlay($0)})
         }
     }
     
     @IBAction func didTapSaveRide(_ sender: Any) {
-        PersistanceManager.instance.saveRide(duration: totalDuration, route: route)
+        
+        let renderer = UIGraphicsImageRenderer(size: mapView.bounds.size)
+        let image = renderer.image { ctx in mapView.drawHierarchy(in: mapView.bounds, afterScreenUpdates: true)}
+        
+        PersistanceManager.instance.saveRide(duration: totalDuration, route: route, routeImage: image.pngData()!)
         self.dismiss(animated: true, completion: nil)
     }
     

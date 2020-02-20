@@ -10,10 +10,10 @@ import Foundation
 import MapKit
 
 extension MKMapView {
-    func configure(from route: Route) {
-        let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter),
-            latitudinalMeters: route.routeFrame.latitudeSpread,
-            longitudinalMeters: route.routeFrame.longitudeSpread)
+    func configure(from model: MapViewModel) {
+        let coordinateRegion = MKCoordinateRegion(center: model.center,
+            latitudinalMeters: model.latitudinalSpread,
+            longitudinalMeters: model.longitudinalSpread)
         self.setRegion(coordinateRegion, animated: false)
         self.showsUserLocation = false
     }

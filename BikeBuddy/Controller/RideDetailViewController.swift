@@ -33,7 +33,8 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     
     private func configureMap() {
         if route.startingPoint != nil {
-            mapView.configure(from: route)
+            let center = CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter)
+            mapView.configure(from: MapViewModel(center: center, longitudinalSpread: route.routeFrame.longitudeSpread, latitudinalSpread: route.routeFrame.latitudinalCenter))
             mapView.delegate = self
         }
     }

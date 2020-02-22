@@ -21,7 +21,7 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         durationLabel.text = ride.duration
-        if let fetchedRoute = PersistanceManager.instance.fetchRoute(withID: ride.routeID!) {
+        if let fetchedRoute = PersistanceManager.instance.fetchRoute(withID: ride.routeID) {
             route = fetchedRoute
             let metersToMilesConversionRate = 0.00062137
             let distanceInMeters = route.distance
@@ -34,7 +34,7 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     private func configureMap() {
         if route.startingPoint != nil {
             let center = CLLocationCoordinate2D(latitude: route.routeFrame.latitudinalCenter, longitude: route.routeFrame.longitudinalCenter)
-            mapView.configure(from: MapViewModel(center: center, longitudinalSpread: route.routeFrame.longitudeSpread, latitudinalSpread: route.routeFrame.latitudinalCenter))
+            mapView.configure(from: MapViewModel(center: center, longitudinalSpread: route.routeFrame.longitudeSpread, latitudinalSpread: route.routeFrame.latitudeSpread))
             mapView.delegate = self
         }
     }
@@ -51,7 +51,7 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.lineWidth = 2
+        renderer.lineWidth = Constants.routeLineWidth
         renderer.strokeColor = colorForPolylines![polyline]!
         return renderer
     }

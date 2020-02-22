@@ -68,7 +68,7 @@ class PersistanceManager {
         }
     }
     
-    func saveRide(duration: String, route: Route, routeImage: Data) {
+    func saveRide(duration: String, route: Route, routeImage: Data, rideDate: String) {
         let cdRoute = CDRoute(context: self.context)
         let points = route.routePoints
         for point in points {
@@ -81,6 +81,7 @@ class PersistanceManager {
         
         let cdRide = CDRide(context: self.context)
         cdRide.duration = duration
+        cdRide.date = rideDate
     
         let cdImage = CDImage(context: self.context)
         cdImage.image = routeImage
@@ -93,18 +94,14 @@ class PersistanceManager {
         PersistanceManager.instance.saveContext()
     }
     
-    func fetchRides() -> [Ride] {
-        var fetchedRides: [CDRide]?
-        var rides = [Ride]()
+    func fetchRides() -> [CDRide] {
+        var fetchedRides = [CDRide]()
         do {
             fetchedRides = try PersistanceManager.instance.context.fetch(CDRide.fetchRequest())
-            for ride in fetchedRides! {
-                rides.append(Ride(duration: ride.duration, routeID: ride.routeID))
-            }
         } catch {
             os_log("Could not fetch rides", log: .default, type: .error)
         }
-        return rides
+        return fetchedRides
     }
     
     func fetchRoute(withID id: String) -> Route? {

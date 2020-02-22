@@ -10,5 +10,6 @@ import Foundation
 
 struct Ride {
     var duration: String
-    var routeID: String?
+    var routeID: String
+    var date: String
 }

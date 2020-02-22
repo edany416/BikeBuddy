@@ -16,9 +16,7 @@ class RideOverviewViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    
-    @IBOutlet weak var testImageView: UIImageView!
-    
+        
     var route: Route!
     var totalDuration: String!
     
@@ -43,7 +41,7 @@ class RideOverviewViewController: UIViewController {
     private var colorForPolylines: [MKPolyline:UIColor]?
     private func drawRouteOnMap() {
         if route.routePoints.count > 1 {
-            let (polylines, colors) = Util.makePolylines(from: route.routePoints)
+            let (polylines,colors) = Util.makePolylines(from: route.routePoints)
             colorForPolylines = colors
             polylines.forEach({mapView.addOverlay($0)})
         }
@@ -54,7 +52,11 @@ class RideOverviewViewController: UIViewController {
         let renderer = UIGraphicsImageRenderer(size: mapView.bounds.size)
         let image = renderer.image { ctx in mapView.drawHierarchy(in: mapView.bounds, afterScreenUpdates: true)}
         
-        PersistanceManager.instance.saveRide(duration: totalDuration, route: route, routeImage: image.pngData()!)
+        let rideDate = route.routePoints[0].timestamp
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
+        
+        PersistanceManager.instance.saveRide(duration: totalDuration, route: route, routeImage: image.pngData()!, rideDate: formatter.string(from: rideDate))
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -68,7 +70,7 @@ extension RideOverviewViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.lineWidth = 2
+        renderer.lineWidth = Constants.routeLineWidth
         renderer.strokeColor = colorForPolylines![polyline]!
         return renderer
     }

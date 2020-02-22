@@ -19,5 +19,6 @@ extension CDRide {
 
     @NSManaged public var routeID: String
     @NSManaged public var duration: String
+    @NSManaged public var date: String
 
 }

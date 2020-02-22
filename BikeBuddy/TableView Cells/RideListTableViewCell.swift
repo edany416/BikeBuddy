@@ -17,40 +17,22 @@ struct RideListCellModel {
 
 class RideListTableViewCell: UITableViewCell, MKMapViewDelegate {
     
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var routeThumbnail: UIImageView!
+    @IBOutlet private weak var imageContainerView: UIView!
     
     func configureCell(from model: RideListCellModel) {
-        let image = UIImage(data: model.routeImage)
-        
-        let scale = 150 / image!.size.width
-        let newHeight = image!.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: 150, height: newHeight))
-        image!.draw(in: CGRect(x: 0, y: 0, width: 150, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        
-        
-        
-        routeThumbnail.image = newImage
-        
+        dateLabel.text = model.date
+        if let image = UIImage(data: model.routeImage) {
+            routeThumbnail.image = imageWithImage(image: image, scaledToSize: routeThumbnail.bounds.size)
+        }
     }
     
-//    private var colorForPolylines: [MKPolyline:UIColor]?
-//    private func drawRouteOnMap() {
-//        if route.routePoints.count > 1 {
-//            let drawComponents = Util.makePolylines(from: route.routePoints)
-//            colorForPolylines = drawComponents.1
-//            drawComponents.0.forEach({mapView.addOverlay($0)})
-//        }
-//    }
-//
-//    internal func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//        let polyline = overlay as! MKPolyline
-//        let renderer = MKPolylineRenderer(polyline: polyline)
-//        renderer.lineWidth = 2
-//        renderer.strokeColor = colorForPolylines![polyline]!
-//        return renderer
-//    }
+    private func imageWithImage(image: UIImage, scaledToSize newSize:CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }

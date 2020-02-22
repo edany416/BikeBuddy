@@ -267,6 +267,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="14z-ER-TXC" id="WMa-gZ-ctd"/>
+                                            <outlet property="imageContainerView" destination="Fnc-jl-gY0" id="vMc-52-dyL"/>
                                             <outlet property="routeThumbnail" destination="4ct-vY-uzv" id="mXA-xc-9Ij"/>
                                         </connections>
                                     </tableViewCell>

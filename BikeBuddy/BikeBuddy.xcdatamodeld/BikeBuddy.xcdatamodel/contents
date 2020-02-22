@@ -5,6 +5,7 @@
         <attribute name="routeId" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CDRide" representedClassName="CDRide" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="routeID" optional="YES" attributeType="String"/>
     </entity>
@@ -18,7 +19,7 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="CDRide" positionX="-153" positionY="-27" width="128" height="73"/>
+        <element name="CDRide" positionX="-153" positionY="-27" width="128" height="88"/>
         <element name="CDRoute" positionX="-234.18359375" positionY="-132.89453125" width="128" height="73"/>
         <element name="CDRoutePoint" positionX="-189" positionY="-45" width="128" height="88"/>
         <element name="CDImage" positionX="-180" positionY="-45" width="128" height="73"/>

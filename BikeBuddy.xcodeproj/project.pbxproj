@@ -30,6 +30,8 @@
 		E27F700823FE5A570007AD40 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700723FE5A570007AD40 /* MapViewModel.swift */; };
 		E27F700F23FE702C0007AD40 /* CDImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700D23FE702C0007AD40 /* CDImage+CoreDataProperties.swift */; };
 		E27F701023FE702C0007AD40 /* CDImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F700E23FE702C0007AD40 /* CDImage+CoreDataClass.swift */; };
+		E27F70122400AE860007AD40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F70112400AE860007AD40 /* Constants.swift */; };
+		E27F70142400C8D50007AD40 /* SpeedGradientGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27F70132400C8D50007AD40 /* SpeedGradientGenerator.swift */; };
 		E28616FF23D98E2C00D17C55 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28616FE23D98E2C00D17C55 /* Route.swift */; };
 		E286170223D9966300D17C55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170123D9966300D17C55 /* MainViewController.swift */; };
 		E286170623DA38C900D17C55 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286170523DA38C900D17C55 /* DurationTimer.swift */; };
@@ -86,6 +88,8 @@
 		E27F700723FE5A570007AD40 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		E27F700D23FE702C0007AD40 /* CDImage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E27F700E23FE702C0007AD40 /* CDImage+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDImage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E27F70112400AE860007AD40 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E27F70132400C8D50007AD40 /* SpeedGradientGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedGradientGenerator.swift; sourceTree = "<group>"; };
 		E28616FE23D98E2C00D17C55 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E286170123D9966300D17C55 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E286170523DA38C900D17C55 /* DurationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				E27F6FFB23FCFD0C0007AD40 /* Ride.swift */,
 				E27F6FFD23FE05C00007AD40 /* RouteFrame.swift */,
 				E27F700223FE30AE0007AD40 /* Util.swift */,
+				E27F70112400AE860007AD40 /* Constants.swift */,
+				E27F70132400C8D50007AD40 /* SpeedGradientGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				E27F700323FE30AE0007AD40 /* Util.swift in Sources */,
 				E255D10223DC3A9300261C46 /* RidesListViewController.swift in Sources */,
 				E27F6FF423FC92DC0007AD40 /* BikeBuddy.xcdatamodeld in Sources */,
+				E27F70122400AE860007AD40 /* Constants.swift in Sources */,
 				E2997D8123DA8511001A6A57 /* PersistenceManager.swift in Sources */,
 				E27F700F23FE702C0007AD40 /* CDImage+CoreDataProperties.swift in Sources */,
 				E27F6FF623FCDD3D0007AD40 /* RoutePoint.swift in Sources */,
@@ -388,6 +395,7 @@
 				E27F700823FE5A570007AD40 /* MapViewModel.swift in Sources */,
 				E2997D7F23DA74F0001A6A57 /* UIColor+Extension.swift in Sources */,
 				E286170223D9966300D17C55 /* MainViewController.swift in Sources */,
+				E27F70142400C8D50007AD40 /* SpeedGradientGenerator.swift in Sources */,
 				E27F6FFE23FE05C00007AD40 /* RouteFrame.swift in Sources */,
 				E27F700123FE197D0007AD40 /* RideListTableViewCell.swift in Sources */,
 				E28616FF23D98E2C00D17C55 /* Route.swift in Sources */,
